@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1063593427363",
+    "firebase_url": "https://mysimplechat-bf9fc.firebaseio.com",
+    "project_id": "mysimplechat-bf9fc",
+    "storage_bucket": "mysimplechat-bf9fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063593427363:android:6ec89e1abb13ab69",
+        "android_client_info": {
+          "package_name": "hjc.iraq.com.mysimplechat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1063593427363-3ih6f0q9rpcfu539alqgpjr9944gvgli.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hjc.iraq.com.mysimplechat",
+            "certificate_hash": "dccfd948831e3e7968d5e992f3eb210bf1ae6db3"
+          }
+        },
+        {
+          "client_id": "1063593427363-rjh4bqvtp6mhm8a85196q9tcrtm5jtjl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8U5M4ofdQXIjV3CRCEzQG2p4eFzJ3NDg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1063593427363-rjh4bqvtp6mhm8a85196q9tcrtm5jtjl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
