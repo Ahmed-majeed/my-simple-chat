@@ -33,9 +33,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_message_black_24dp" />
-                            <entry key="sourceFile" value="C:\Users\LENOVO Y520" />
+                            <entry key="outputName" value="ic_send" />
+                            <entry key="sourceFile" value="C:\Users\LENOVO Y520\Downloads\send.svg" />
                           </map>
                         </option>
                       </PersistentState>

@@ -8,12 +8,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 import hjc.iraq.com.mysimplechat.R
 import hjc.iraq.com.mysimplechat.adapters.UsersAdapter
-import hjc.iraq.com.mysimplechat.models.Users
 import kotlinx.android.synthetic.main.fragment_users.*
 
 
@@ -25,34 +23,45 @@ class UsersFragment : Fragment() {
     }
 
 
+    @SuppressLint("WrongConstant")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//
+//        val usersRef = FirebaseDatabase.getInstance().reference.child("Users")
+//        usersRef.addValueEventListener(object : ValueEventListener{
+//            override fun onCancelled(error: DatabaseError) {
+//                Toast.makeText(context,error.message,Toast.LENGTH_LONG).show()
+//            }
+//
+//            @SuppressLint("WrongConstant")
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//
+//                val users: MutableList<Users> = mutableListOf()
+//                snapshot.children.forEach { child ->
+//
+//                    val user = child.getValue(Users::class.java)
+//
+//                    user?.let { user ->
+//                        users.add(user)
+//                    }
+//
+//                }
+//                userRecyclerViewId.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+//                userRecyclerViewId.adapter = UsersAdapter(users)
+//            }
+//
+//        })
 
-        val usersRef = FirebaseDatabase.getInstance().reference.child("Users")
-        usersRef.addValueEventListener(object : ValueEventListener{
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(context,error.message,Toast.LENGTH_LONG).show()
-            }
+        val linearLayoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL, false)
 
-            @SuppressLint("WrongConstant")
-            override fun onDataChange(snapshot: DataSnapshot) {
+        mUserDatabase = FirebaseDatabase.getInstance().reference.child("Users")
 
-                val users: MutableList<Users> = mutableListOf()
-                snapshot.children.forEach { child ->
+        userRecyclerViewId.setHasFixedSize(true)
 
-                    val user = child.getValue(Users::class.java)
 
-                    user?.let { user ->
-                        users.add(user)
-                    }
-
-                }
-                userRecyclerViewId.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
-                userRecyclerViewId.adapter = UsersAdapter(users)
-            }
-
-        })
+        userRecyclerViewId.layoutManager = linearLayoutManager
+        userRecyclerViewId.adapter = UsersAdapter(mUserDatabase!!, context!!)
 
 //        val linerLayoutManger = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 //        mUserDatabase = FirebaseDatabase.getInstance().reference.child("Users")

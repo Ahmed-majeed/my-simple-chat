@@ -53,15 +53,15 @@ class SettingsActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
 
-                val displayName = dataSnapshot.child("display_name").value
+                val displayName = dataSnapshot.child("display_name").value.toString()
                 val image = dataSnapshot.child("image").value.toString()
-                val userStatus = dataSnapshot.child("status").value
-                val thumbanil = dataSnapshot.child("thumb_image").value
+                val userStatus = dataSnapshot.child("status").value.toString()
+//                val thumbanil = dataSnapshot.child("thumb_image").value.toString()
 
-                settingsDisplayName.text = displayName.toString()
-                settingsStatusText.text = userStatus.toString()
+                settingsDisplayName.text = displayName
+                settingsStatusText.text = userStatus
 
-                if (!image!!.equals("default")) {
+                if (image != "default") {
                     Picasso.get()
                         // .placeholder(image)
                         .load(image)
@@ -94,7 +94,7 @@ class SettingsActivity : AppCompatActivity() {
 
         if (requestCode == Consts.GALLERY_ID && resultCode == Activity.RESULT_OK) {
 
-            val image: Uri = data!!.data
+            val image: Uri = data!!.data!!
             CropImage.activity(image)
                 .setAspectRatio(1, 1)
                 .start(this)
@@ -139,6 +139,7 @@ class SettingsActivity : AppCompatActivity() {
                             //let get the pic url
 
                             val downloadUrl = resultUri.toString()
+
 
                             // upload task
                             val uploadTask: UploadTask = thumbFilePath!!.putBytes(thumbByteArray)

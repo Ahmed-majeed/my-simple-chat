@@ -14,19 +14,72 @@ class ProfileActivity : AppCompatActivity() {
 
     var mCurrentUser: FirebaseUser? = null
     var mUsersDatabase: DatabaseReference? = null
+    var userId: String? = null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+//
+//        supportActionBar!!.title = "Profile"
+//        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+//
+//        if (intent.extras !=null){
+//            mCurrentUser = FirebaseAuth.getInstance().currentUser
+//            mUsersDatabase = FirebaseDatabase.getInstance().reference.child("Users")
+////                .child("userId")
+//
+//            setUpProfile()
+//        }
+//
+//    }
+//
+//    private fun setUpProfile() {
+//
+//        mUsersDatabase?.addValueEventListener(object : ValueEventListener{
+//            override fun onCancelled(databaseError: DatabaseError) {
+//                Toast.makeText(this@ProfileActivity,databaseError.message,Toast.LENGTH_LONG).show()
+//            }
+//
+//            override fun onDataChange(dataSnapshot : DataSnapshot) {
+//
+//                val displayName = intent.getStringExtra("name")
+//                val status = intent.getStringExtra("status")
+//                val image = intent.getStringExtra("profile")
+//
+////                val displayName = dataSnapshot.child("display_name").value.toString()
+////                val status = dataSnapshot.child("status").value.toString()
+////                val image = dataSnapshot.child("image").value.toString()
+//
+//                profileName.text = displayName
+//                profileStatus.text = status
+//
+//                Picasso.get()
+//                    .load(image)
+//                    .placeholder(R.drawable.happy_woman)
+//                    .into(profilePicture)
+//
+//
+//            }
+//
+//        })
+//    }
+//
+//
+//}
+//
 
         supportActionBar!!.title = "Profile"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        if (intent.extras !=null){
+        if (intent.extras != null) {
+            userId = intent.getStringExtra("userId").toString()
+
             mCurrentUser = FirebaseAuth.getInstance().currentUser
             mUsersDatabase = FirebaseDatabase.getInstance().reference.child("Users")
-//                .child("display_name")
+                .child(userId!!)
+
 
             setUpProfile()
         }
@@ -35,20 +88,12 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun setUpProfile() {
 
-        mUsersDatabase?.addValueEventListener(object : ValueEventListener{
-            override fun onCancelled(databaseError: DatabaseError) {
-                Toast.makeText(this@ProfileActivity,databaseError.message,Toast.LENGTH_LONG).show()
-            }
+        mUsersDatabase!!.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-            override fun onDataChange(dataSnapshot : DataSnapshot) {
-
-                val displayName = intent.getStringExtra("name")
-                val status = intent.getStringExtra("status")
-                val image = intent.getStringExtra("profile")
-
-//                val displayName = dataSnapshot?.child("display_name").value.toString()
-//                val status = dataSnapshot?.child("status").value.toString()
-//                val image = dataSnapshot!!.child("image").value.toString()
+                val displayName = dataSnapshot.child("display_name").value.toString()
+                val status = dataSnapshot.child("status").value.toString()
+                val image = dataSnapshot.child("image").value.toString()
 
                 profileName.text = displayName
                 profileStatus.text = status
@@ -61,9 +106,9 @@ class ProfileActivity : AppCompatActivity() {
 
             }
 
+            override fun onCancelled(databaseError: DatabaseError) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
         })
     }
-
-
 }
-

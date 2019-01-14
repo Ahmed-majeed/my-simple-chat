@@ -16,7 +16,7 @@ class DashboardActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        var sectionAdapter: SectionPagerAdapter? = null
+        val sectionAdapter: SectionPagerAdapter?
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
         supportActionBar?.title="Dashboard"
