@@ -31,7 +31,7 @@ class CreateAccountActivity : AppCompatActivity() {
             if (email.isNotEmpty() || password.isNotEmpty() || displayName.isNotEmpty()) {
                 createAccount(email, password, displayName)
             } else {
-                Toast.makeText(this, "Plase Fill Out The Fields", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Please Fill Out The Fields", Toast.LENGTH_LONG).show()
             }
         }
     }

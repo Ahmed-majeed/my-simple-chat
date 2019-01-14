@@ -107,7 +107,7 @@ class ProfileActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Toast.makeText(this@ProfileActivity,databaseError.message,Toast.LENGTH_LONG).show()
             }
         })
     }
