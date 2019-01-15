@@ -35,8 +35,8 @@
                           <map>
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_send" />
-                            <entry key="sourceFile" value="C:\Users\LENOVO Y520\Downloads\send.svg" />
+                            <entry key="outputName" value="ic_conversation" />
+                            <entry key="sourceFile" value="C:\Users\LENOVO Y520\Downloads\conversation.svg" />
                           </map>
                         </option>
                       </PersistentState>
